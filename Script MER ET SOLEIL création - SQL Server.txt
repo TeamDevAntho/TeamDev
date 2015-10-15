@@ -1,0 +1,59 @@
+USE MerEtSoleil
+GO
+
+CREATE TABLE [Client]
+(
+	[NumCli] [int],
+	[GenreCli] [char] (10),
+	[NomCli] [char] (25),
+	[PrenomCli] [char] (25),
+	[RueCli] [char] (50),
+	[CPCli] [char] (5),
+	[VilleCli] [char] (25),
+	[CA] [money] DEFAULT 0,
+	CONSTRAINT PK_Client primary key (NumCli)
+)
+GO
+CREATE TABLE [CE]
+(
+	[NumCli] [int],
+	[Societe] [char] (50),
+	[Banque] [char] (50),
+	CONSTRAINT PK_CE primary key (NumCli)
+)
+GO
+
+CREATE TABLE [Particulier]
+(
+	[NumCli] [int],
+	[ChequeVac] [tinyint],
+	CONSTRAINT PK_Part primary key (NumCli)
+)
+GO
+
+CREATE TABLE [Studio]
+(
+	[NumStudio] [int] NOT NULL ,
+	[NomBatiment] [char] (40),
+	[NbPlaces] [int] NULL ,
+	[PrixSaison] [int] NULL ,
+	[PrixHSaison] [int] NULL ,
+	[numProp] [int],
+	CONSTRAINT PK_Studio primary key (NumStudio)
+)
+GO
+
+CREATE TABLE [Location]
+(
+	[NumStu] [int],
+	[NumSem] [int],
+	[NumCli] [int],
+	[Regle] [bit],
+	[PrixLoc] [int],
+	CONSTRAINT PK_Location primary key (NumStu,NumSem)
+)
+GO
+
+
+
+
